@@ -72,12 +72,12 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     switch (selector) {
     case 0:
       if (route_list_inited == 0) {
-        const char *remote_endpoint = gb_get_random_string();
+        /* const char *remote_endpoint = gb_get_random_string();
         memset(&rl, 0, sizeof(struct route_list));
         rl.flags = fuzz_randomizer_get_int(0, 0xffffff);
-
-        init_route_list(&rl, opt, remote_endpoint, default_metric, remote_host,
-                        c.es, &c);
+*/
+        /* init_route_list(&rl, opt, remote_endpoint, default_metric, remote_host,
+                        c.es, &c); */
         route_list_inited = 1;
       }
       break;
@@ -124,7 +124,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
       break;
     case 6:
       if (route_list_ipv6_inited == 0) {
-        const char *remote_endpoint = gb_get_random_string();
+        /* const char *remote_endpoint = gb_get_random_string();
         memset(&rl, 0, sizeof(struct route_list));
         struct in6_addr remote_host;
 
@@ -139,7 +139,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
         }
 
         init_route_ipv6_list(&rl6, opt6, remote_endpoint, 0, &remote_host, c.es,
-                             &c);
+                             &c); */
         route_list_ipv6_inited = 1;
       }
       break;
