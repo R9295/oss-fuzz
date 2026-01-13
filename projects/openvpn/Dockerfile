@@ -21,4 +21,4 @@ RUN git clone --depth 1 https://github.com/google/boringssl.git boringssl
 RUN git clone --depth 1 https://github.com/R9295/openvpn openvpn
 WORKDIR openvpn
 RUN cp ./fuzz/fuzz_header.h ./src/openvpn/
-RUN ./fuzz/build.sh
+RUN cp ./fuzz/build.sh ../
