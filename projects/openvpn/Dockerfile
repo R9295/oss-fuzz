@@ -18,11 +18,7 @@ FROM gcr.io/oss-fuzz-base/base-builder
 RUN apt-get update && apt-get install -y pkg-config make autoconf automake libtool libssl-dev liblzo2-dev libpam-dev libnl-3-dev libnl-genl-3-dev libcap-ng-dev
 
 RUN git clone --depth 1 https://github.com/google/boringssl.git boringssl
-RUN git clone --depth 1 https://github.com/OpenVPN/openvpn openvpn
+RUN git clone --depth 1 https://github.com/R9295/openvpn openvpn
 WORKDIR openvpn
-COPY build.sh $SRC/
-COPY fuzz*.cpp $SRC/
-COPY fuzz*.c $SRC/
-COPY fuzz*.h $SRC/openvpn/src/openvpn/
-
-COPY crypto_patch.txt $SRC/crypto_patch.txt
+RUN cp ./fuzz/fuzz_header.h ./src/openvpn/
+RUN ./fuzz/build.sh
